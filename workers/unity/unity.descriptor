@@ -1,0 +1,15 @@
+{
+	"Path": "Assets/Improbable/Dependencies",
+	"NugetDependencies": [
+		{
+			"Name": "Improbable.CoreLibraryDeprecated",
+			"Version": null,
+			"SpatialProjectDescriptor": "../../spatialos.json"
+		},
+		{
+			"Name": "Improbable.GelSharp",
+			"Version": null,
+			"SpatialProjectDescriptor": "../../spatialos.json"
+		}
+	]
+}

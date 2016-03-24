@@ -1,0 +1,19 @@
+syntax = "proto2";
+package schema.improbable.internet;
+
+import "improbable/entity_state.proto";
+
+
+
+message NetworkScaleData {
+  optional float scale = 1;
+}
+
+extend improbable.EntityState {
+  optional NetworkScaleData networkScale = 1002
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: true
+    }];
+}
+     

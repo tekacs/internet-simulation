@@ -1,0 +1,18 @@
+syntax = "proto2";
+package schema.improbable.internet;
+
+import "improbable/entity_state.proto";
+
+
+
+// Routing Table information
+message RouteInformation {
+    // EntityID of the source Network
+  optional int64 sourceNetworkID = 1 [(improbable.entity_id) = true];
+  // EntityID of the destination Network
+  optional int64 destinationNetworkID = 2 [(improbable.entity_id) = true];
+  // EntityID of the Route
+  optional int64 routeId = 3 [(improbable.entity_id) = true];
+  
+}
+     

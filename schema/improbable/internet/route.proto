@@ -1,0 +1,32 @@
+syntax = "proto2";
+package schema.improbable.internet;
+
+import "improbable/entity_state.proto";
+
+import "improbable/math/coordinates.proto";
+
+// Route definition
+message RouteData {
+  // Source NetworkId
+  optional int64 source = 1 [(improbable.entity_id) = true];
+  // Destination NetworkId
+  optional int64 dest = 2 [(improbable.entity_id) = true];
+  // Maximum Capacity
+  optional float capacity = 3;
+  // Capacity Utilisation
+  optional float utilisationUp = 4;
+  optional float utilisationDown = 7;
+  // Source Position
+  optional improbable.math.Coordinates srcPosition = 5;
+  // Destination Position
+  optional improbable.math.Coordinates destPosition = 6;
+}
+
+extend improbable.EntityState {
+  optional RouteData route = 1006
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: true
+    }];
+}
+     

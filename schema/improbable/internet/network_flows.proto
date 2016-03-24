@@ -1,0 +1,27 @@
+syntax = "proto2";
+package schema.improbable.internet;
+
+import "improbable/entity_state.proto";
+
+import "improbable/internet/network_flow.proto";
+
+// Network definition
+message NetworkFlowsData {
+  // Rate of packet generation - Network Id -> Rate 
+  map<int64, float> generationRate = 1 [(improbable.entity_id_key) = true];
+  // Current Flows through this network
+  map<int64, improbable.internet.NetworkFlow> flows = 2 [(improbable.entity_id_key) = true];
+  // Current Flows that are going to here
+  optional bool sunkFlows = 3;
+  // Current Failed flows
+  optional float failedFlows = 4;
+}
+
+extend improbable.EntityState {
+  optional NetworkFlowsData networkFlows = 1004
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: true
+    }];
+}
+     

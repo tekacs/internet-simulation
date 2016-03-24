@@ -1,0 +1,38 @@
+syntax = "proto2";
+package schema.improbable.internet;
+
+import "improbable/entity_state.proto";
+
+import "improbable/internet/route_information.proto";
+
+
+message RoutesUpdated {
+
+}
+
+// Network definition
+message NetworkData {
+  // List of EntityIds of incoming routes
+  repeated improbable.internet.RouteInformation incomingRoutes = 2;
+  // List of EntityIds of outgoing routes
+  repeated improbable.internet.RouteInformation outgoingRoutes = 3;
+
+  repeated RoutesUpdated routes_updated = 4[(improbable.state_event) = true];
+}
+
+message NetworkIdData {
+
+  optional int64 asnumber = 1;
+
+}
+
+extend improbable.EntityState {
+  optional NetworkIdData NetworkId  = 1010;
+
+  optional NetworkData network = 1003
+    [(improbable.entity_state_options) = {
+      state_synchronized: false
+      state_queryable: false
+    }];
+}
+     

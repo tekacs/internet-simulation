@@ -1,0 +1,48 @@
+using UnityEngine;
+{{#newline}}
+using System;
+{{#newline}}
+using WorldScene.Visualizers;
+{{#newline}}
+{{#each StateNamespaces}}
+using {{this}};
+{{#newline}}
+{{/each}}
+{{#newline}}
+namespace {{Namespace}} {
+{{#newline}}
+	class {{Name}}Visualizer : MonoBehaviour, IVisualizer {
+{{#newline}} {{#each States}}
+		[Data] private {{TypeName}} {{VariableName}};
+{{#newline}}
+{{/each}}
+{{#newline}}
+		void OnEnable()
+{{#newline}}
+		{
+{{#newline}}
+{{#each Events}}
+			{{this.State.VariableName}}.{{this.Name}} += Handle{{this.Name}};
+{{#newline}}
+{{/each}}
+		}
+{{#newline}}
+{{#newline}}
+{{#each Events}}
+		private void Handle{{this.Name}}({{this.Type}} value)
+{{#newline}}
+		{
+{{#newline}}
+		}
+{{#newline}}
+{{#newline}}
+{{/each}}
+		void OnDisable() 
+{{#newline}}
+		{
+{{#newline}}
+		}
+{{#newline}}
+	}
+{{#newline}}
+}

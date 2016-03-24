@@ -1,0 +1,20 @@
+syntax = "proto2";
+package schema.improbable.player;
+
+import "improbable/entity_state.proto";
+
+
+
+// Dummy state to be delegated so that visualizers can identify when they are the local player
+message LocalPlayerCheckStateData {
+
+}
+
+extend improbable.EntityState {
+  optional LocalPlayerCheckStateData localPlayerCheckState = 1001
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: false
+    }];
+}
+     

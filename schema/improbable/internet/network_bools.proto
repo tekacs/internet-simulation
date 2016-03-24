@@ -1,0 +1,29 @@
+syntax = "proto2";
+package schema.improbable.internet;
+
+import "improbable/entity_state.proto";
+
+
+
+// Network definition
+message NetworkBoolsData {
+  // True if we are genertaing flows
+  optional bool generating = 1;
+  // True if we are sending data
+  optional bool routing = 2;
+  // True if we have broken routes
+  optional bool broken = 3;
+  // True if we are routing to ourselves
+  optional bool sinking = 4;
+
+  optional int64 id = 5;
+}
+
+extend improbable.EntityState {
+  optional NetworkBoolsData networkBools = 1005
+    [(improbable.entity_state_options) = {
+      state_synchronized: true
+      state_queryable: true
+    }];
+}
+     

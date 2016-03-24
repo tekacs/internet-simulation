@@ -1,0 +1,13 @@
+syntax = "proto2";
+package schema.improbable.internet;
+
+import "improbable/entity_state.proto";
+
+
+
+// Details of flows through a network per incoming route
+message NetworkFlow {
+    // Destination volumes
+  map<int64, float> destinationVolumes = 1 [(improbable.entity_id_key) = true];
+}
+     
